@@ -38,28 +38,9 @@
         </view>
       </view>
     </view>
-    <!--
-    <view class='f ac rw xb maxHeight ovya'>
-      <view
-        wx:for="{{personList}}" wx:for-item="item" wx:for-index="index" wx:key="unique"
-        class="w22 nowrap pt15r pb15r fs24r bde mb15r tc rds50r {{item.isChecked ? ' bgfcf0f0 gff5650' : ' bgf5 g25'}}"
-        style="border: {{item.isChecked ? '1px solid #ff5650;' : '1px solid #f5f5f5;'}}"
-        bindtap="checkPerson"
-        data-item="{{item}}"
-      >
-        {{item.name}}
-      </view>
-      <view wx:for="[1,2,3,4,5,6]" wx:key="unique" class='w22 nowrap h0' />
-    </view>
-    -->
     <view class='fs32r b mb30r' style="margin-top:40rpx;">
       是否需要同时查看真伪：<switch style="transform:scale(0.8);" bindchange="switchChange"/>
     </view>
-    <!--
-    <view class='rds50r w65 auto pt20r pb20r gf f32r linear4b83f9 tc abs l50 tx-50 zx10' style='bottom: 200rpx;' bindtap="bindScan">
-      开始扫描
-    </view>
-    -->
   </view>
   <view class='abs f w100' style="bottom: 200rpx;">
     <view class='f1'>
