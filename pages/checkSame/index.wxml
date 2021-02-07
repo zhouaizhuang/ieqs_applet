@@ -1,0 +1,164 @@
+<view class='fixed trbl0 pt20r bgf5 ovya'>
+  <view class='auto w95 bgf rds5r rel' style="margin-bottom:200rpx;">
+    <view class='f ac xc fs30r gff5650 b pt15r' wx:if="{{status === '0' && msg}}">{{msg}}</view> <!--已经报销过的发票提示报销时间信息-->
+    <view class='f ac xc fs30r gff5650 b pt10r'>报销人：{{invoce.claimant}}</view>
+    <view class='rel f ac xc fs28r ' style="border-bottom: 1rpx dashed #E7E7E7;color: #7E4B49;padding: 50rpx 0;">
+      <image class='l50 t50 txy-50 abs' style="width:150rpx; height:80rpx;" src='../../imgs/round.png' />
+      {{invoce.administrativeDivisionName + invoce.typeText}}
+      <view class='w20r h20r rds50 bgf5 abs' style="left:-12rpx; bottom:-10rpx;" />
+      <view class='w20r h20r rds50 bgf5 abs' style="right:-12rpx; bottom:-10rpx;" />
+    </view>
+    <view wx:if="{{invoce.status == '1'}}"> <!--已查验的发票需要展示详细信息-->
+      <view class='pt20r pb20r ml30r mr30r fs26r bdbe' style="color: #969696;">
+        <view class='f mb15r'>
+          <view class='f1'>不含税金额</view>
+          <view class='f2 f xe'>￥{{invoce._totalAmount}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>税额</view>
+          <view class='f2 f xe'>￥{{invoce._totalTax}}</view>
+        </view>
+        <view class='f '>
+          <view class='f1'>价税合计</view>
+          <view class='f2 f xe' style="color: #1c1c1c;">￥{{invoce._amountTax}}</view>
+        </view>
+      </view>
+      <view class='pt20r pb20r ml30r mr30r fs26r bdbe' style="color: #969696;">
+        <view class='f mb15r'>
+          <view class='f1'>发票代码</view>
+          <view class='f2 f xe'>{{invoce.invoiceCode}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>发票号码</view>
+          <view class='f2 f xe'>{{invoce.invoiceNumber}}</view>
+        </view>
+        <view class='f pb20r'>
+          <view class='f1'>开票日期</view>
+          <view class='f2 f xe'>{{invoce._created_at}}</view>
+        </view>
+        <view class='f'>
+          <view class='f1'>校验码</view>
+          <view class='f2 f xe'>{{invoce.checkCode}}</view>
+        </view>
+      </view>
+      <view class='pt20r pb20r ml30r mr30r fs26r bdbe' style="color: #969696;">
+        <view class='f mb15r'>
+          <view class='f1'>购买方</view>
+          <view class='f2 f xe' style="color: #1c1c1c;">{{invoce.purchaserName}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>纳税人识别号</view>
+          <view class='f2 f xe'>{{invoce.purchaserTaxNo}}</view>
+        </view>
+        <view class='f pb20r'>
+          <view class='f1'>地址及电话</view>
+          <view class='f2 f xe tr'>{{invoce.purchaserAddressPhone}}</view>
+        </view>
+        <view class='f'>
+          <view class='f1'>开户行及电话</view>
+          <view class='f2 f xe tr'>{{invoce.purchaserBank}}</view>
+        </view>
+      </view>
+      <view class='pt20r pb20r ml30r mr30r fs26r bdbe' style="color: #969696;">
+        <view class='f mb15r'>
+          <view class='f1'>销售方</view>
+          <view class='f2 f xe' style="color: #1c1c1c;">{{invoce.salesName}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>纳税人识别号</view>
+          <view class='f2 f xe'>{{invoce.salesTaxNo}}</view>
+        </view>
+        <view class='f pb20r'>
+          <view class='f1'>地址及电话</view>
+          <view class='f2 f xe tr'>{{invoce.salesAddressPhone}}</view>
+        </view>
+        <view class='f'>
+          <view class='f1'>开户行及电话</view>
+          <view class='f2 f xe tr'>{{invoce.salesBank}}</view>
+        </view>
+      </view>
+      <view class='pt20r pb30r bdbe fs24r ml30r mr30r rel mb30r' style="color: #969696;border-bottom: 1rpx dashed #E7E7E7;">
+        <view class='f mb10r'>
+          <view class='w39'>货物或应税劳务、服务</view>
+          <view class='w9 tc'>型号</view>
+          <view class='w9 tc'>单位</view>
+          <view class='w9 tc'>数量</view>
+          <view class='w13 tc'>单价</view>
+          <view class='w13 tc'>金额</view>
+          <view class='w6 tr'>税</view>
+        </view>
+        <view class='mb30r fs22r' wx:for="{{invoce._ver}}" wx:for-item="item" wx:for-index="index" wx:key="unique">
+          <view class='f' wx:if="{{item.isShow}}">
+            <view class='w39'>{{item.commodityName}}</view>
+            <view class='w9 tc'>{{item.specificationModel}}</view>
+            <view class='w9 tc'>{{item.unit}}</view>
+            <view class='w9 tc'>{{item.quantity}}</view>
+            <view class='w13 tc'>{{item.unitPrice}}</view>
+            <view class='w13 tc'>{{item.amount}}</view>
+            <view class='w6 tr'>{{item.taxRate}}</view>
+          </view>
+        </view>
+        <view
+          class='fs28r bdc rds15r tc abs zx10 b0 l50 bgf'
+          style="width:160rpx;color:#FE7A55;transform: translate(-50%, 50%);padding:10rpx 0;"
+          bindtap="{{isShowMore ? 'showMore' : 'collect'}}"
+        >
+          {{isShowMore ? '查看更多' : '收起'}}
+        </view>
+      </view>
+      <view class='fs26r ml30r mr30r pt20r pb30r mb30r f' style="color: #969696;">
+        <view class='f1'>备注</view>
+        <view class='f2 f xe'>订单号：123123010230</view>
+      </view>
+      <view
+        wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="item" wx:for-index="index" wx:key="unique"
+        class='w20r h20r rds50 bgf5 abs tx-50' style="left: {{item * 10}}%; bottom:-8rpx;"
+      />
+    </view>
+    <view wx:else>
+      <view class='pt20r pb20r ml30r mr30r fs26r bdbe' style="color: #969696;">
+        <view class='f mb15r'>
+          <view class='f1'>发票代码</view>
+          <view class='f2 f xe'>{{invoce.invoiceCode}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>发票号码</view>
+          <view class='f2 f xe'>{{invoce.invoiceNumber}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>不含税金额</view>
+          <view class='f2 f xe'>￥{{invoce._totalAmount}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>开票日期</view>
+          <view class='f2 f xe'>{{invoce._created_at}}</view>
+        </view>
+        <view class='f mb15r'>
+          <view class='f1'>发票校验码</view>
+          <view class='f2 f xe'>{{invoce.checkCode}}</view>
+        </view>
+      </view>
+      <view
+        wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="item" wx:for-index="index" wx:key="unique"
+        class='w20r h20r rds50 bgf5 abs tx-50' style="left: {{item * 10}}%; bottom:-8rpx;"
+      />
+    </view>
+  </view>
+  <view class='fixed f w100 zx100' style="bottom: 50rpx;">
+    <view class='f1'>
+      <view class='w85 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindNext">
+        继续扫描
+      </view> 
+    </view>
+    <view class='f1'>
+      <view class='w85 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindUpload">
+        拍照识别
+      </view> 
+    </view>
+    <view class='f1'>
+      <view class='w85 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindEndTotal">
+        结束并汇总
+      </view> 
+    </view>
+  </view>
+</view>

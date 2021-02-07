@@ -1,0 +1,78 @@
+<!--index.wxml-->
+<view class='rel h100 bgf ovh'> 
+  <view class='p30r'>
+    <view class='f ac fs32r mb30r mt20r'>
+      <view class='b' style="width: 140rpx;">报销人：</view>
+      <view class='f ac f1 b rel'>
+        {{claimant || '未选择'}}
+      <!--
+        <view class='f1'>
+          <input value='{{keyword}}' placeholder-class="input-placeholder" placeholder="请输入报销人" bindinput="handleInputChange" />
+        </view>
+        <view class='rel' style="width:100rpx;">
+          <picker mode="selector" value="{{name}}" range="{{personList}}" range-key="name" bindchange="bindPicker" bindcancel="bindcancel" >
+            <image bindtap="bindSelect" class="abs b pl30r pr30r {{isSpread ? 'tr180' : ''}}" style='width:40rpx;height:40rpx;right:-30rpx;' src='http://pic.crm.hangjiacrm.com/xcx/img/downArrow.png'></image>
+          </picker>
+        </view>
+      -->
+        <image class='w40r h40r abs r0' src='http://pic.crm.hangjiacrm.com/xcx/img/search-clear.png' wx:if="{{claimant}}" bindtap='clear'></image>
+      </view>
+    </view>
+    <view class='f ac fs32r mt30r bdbe'>
+      <view class='f1'>
+        <input value='{{keyword}}' placeholder-class="input-placeholder" placeholder="请输入关键字" bindinput="handleInputChange" bindfocus="handleFocus" bindblur="handleBlur"/>
+      </view>
+      <view class='rel' style="width:150rpx;">
+        <!--<picker mode="selector" value="{{name}}" range="{{personList}}" range-key="name" bindchange="bindPicker" bindcancel="bindcancel" >
+          -->
+          <view class='f xe g477efd' bindtap="bindSelect">
+            <image class="b ty7r trans3 {{isSpread ? 'imgtr180' : ''}}" style='width:40rpx;height:40rpx;' src='http://pic.crm.hangjiacrm.com/xcx/img/downArrow.png'></image>
+          </view>
+        <!--</picker>-->
+      </view>
+    </view>
+    <view class='rel' wx:if="{{isSpread}}">
+      <view class='abs w100 maxHeight t0 fs28r bgf zx10 ovya bdbe' style="border-radius: 0 0 10rpx 10rpx; border-left: 1rpx solid #eee; border-right: 1rpx solid #eee;">
+        <view wx:for="{{personList}}" wx:for-item="item" wx:for-index="index" wx:key="unique">
+          <view class='pl30r pt15r pb15r f ac pt10r' bindtap="checkClaimant" data-name="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <!--
+    <view class='f ac rw xb maxHeight ovya'>
+      <view
+        wx:for="{{personList}}" wx:for-item="item" wx:for-index="index" wx:key="unique"
+        class="w22 nowrap pt15r pb15r fs24r bde mb15r tc rds50r {{item.isChecked ? ' bgfcf0f0 gff5650' : ' bgf5 g25'}}"
+        style="border: {{item.isChecked ? '1px solid #ff5650;' : '1px solid #f5f5f5;'}}"
+        bindtap="checkPerson"
+        data-item="{{item}}"
+      >
+        {{item.name}}
+      </view>
+      <view wx:for="[1,2,3,4,5,6]" wx:key="unique" class='w22 nowrap h0' />
+    </view>
+    -->
+    <view class='fs32r b mb30r' style="margin-top:40rpx;">
+      是否需要同时查看真伪：<switch style="transform:scale(0.8);" bindchange="switchChange"/>
+    </view>
+    <!--
+    <view class='rds50r w65 auto pt20r pb20r gf f32r linear4b83f9 tc abs l50 tx-50 zx10' style='bottom: 200rpx;' bindtap="bindScan">
+      开始扫描
+    </view>
+    -->
+  </view>
+  <view class='abs f w100' style="bottom: 200rpx;">
+    <view class='f1'>
+      <view class='w80 auto rds50r pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindScan">
+        开始扫描
+      </view> 
+    </view>
+    <view class='f1'>
+      <view class='w80 auto rds50r pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindUpload">
+        拍照识别
+      </view> 
+    </view>
+  </view>
+</view>
+
+

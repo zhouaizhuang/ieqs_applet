@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/index",
+    "pages/checkSame/index",
+    "pages/total/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#4b83f9",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": false,
+    "navigationStyle": "default"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

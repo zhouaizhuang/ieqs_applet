@@ -1,0 +1,41 @@
+<view class='ovh bgf h100 rel'>
+  <view class='abs l50 tx-50 w90' style="top:20%;">
+    <view class='p20r rds10r fs30r' style="border: 1rpx solid #ccc;">
+      <view class='fs36r b tc pt10r pb30r bdbe'>发票数据汇总</view>
+      <view class='auto'>
+        <view class='f pt20r pb20r bdbe'>
+          <view class='' style="width:220rpx;">报销人：</view>
+          <view class='f1'>{{claimant}}</view>
+        </view>
+        <view class='f pt20r pb20r bdbe'>
+          <view class='' style="width:220rpx;">发票入账数量：</view>
+          <view class='f1'>共{{number ||'0'}}张</view>
+        </view>
+        <view class='f pt20r pb10r'>
+          <view class='' style="width:220rpx;">金额总计：</view>
+          <view class='f1'>￥{{_price || '0'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class='abs f w100' style="bottom: 200rpx;">
+    <!--
+    <view class='f1'>
+      <view class='w80 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindNext">
+        发票明细
+      </view> 
+    </view>
+    <view class='f1'>
+      <view class='w80 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="bindEndTotal">
+        导出
+      </view> 
+    </view>
+    -->
+    <view class='f1'>
+      <view class='w80 auto rds50r auto pt20r pb20r gf f32r mt30r linear4b83f9 tc' bindtap="goBack2">
+        返回
+      </view> 
+    </view>
+  </view>
+</view>
